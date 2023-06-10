@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title>Lista de Torcedor</title>
+</head>
+<body>
+    <div id="app">
+            <h1>{{teste}}</h1>
+            <h4>Adicinar Torcedor</h4>
+            <span>Nome:</span><input type="text" id="inputNome"/>
+            <span>Idade:</span><input type="text" id="inputIdade"/>
+            <span>Time:</span><input type="text" id="inputTime"/>
+            <button @click="adicionarTorcedor()">Adcionar</button>
+            <hr/>
+            <h4>Ultimo Tocerdor Cadastrado</h4>
+            <template v-if="torcedores.length > 0">
+                <p>Torcedor: {{torcedores[torcedores.length -1].nome}}</p>
+                <p>Torcedor: {{torcedores[torcedores.length -1].idade}}</p>
+                <p>Torcedor: {{torcedores[torcedores.length -1].time}}</p>
+            </template>
+            <hr/>
+            <h4>Torcedores do Bahia</h4>
+            <p v-for="dados in torcedores">{{dados.time === 'Bahia' ? dados.time: ''}}</p>
+            <hr/>
+            <h4>Torcedores Cadastrado</h4>
+            <p v-for="dados in torcedores">{{dados.nome}}</p>
+        </div>
+        <script src="./js/script.js"></script>
+</body>
+</html>
