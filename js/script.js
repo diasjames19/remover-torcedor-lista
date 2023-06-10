@@ -2,6 +2,7 @@ const vm = new Vue({ el:"#app",
     data:{
             teste:"James",
             torcedores:[],
+            torcedorRemovido:[],
         },
     computed:{
         ultimoTorcedor(){
@@ -22,7 +23,8 @@ const vm = new Vue({ el:"#app",
                 return true
             else
                 return false
-        },   
+        }, 
+       
     },   
    
     methods:{
@@ -32,8 +34,13 @@ const vm = new Vue({ el:"#app",
                 idade:inputIdade.value,
                 time:inputTime.value
             });
+        },
+        removerTorcedor(){
+           let posicao =  this.torcedores.length - 1
+           this.torcedorRemovido.push(this.torcedores.splice(posicao,1))
+
+           alert("Torcedor Removido") 
         }
-        
     },
 });
 
