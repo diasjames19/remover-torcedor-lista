@@ -1,18 +1,39 @@
 const vm = new Vue({ el:"#app",
-data:{
-        teste:"James",
-        torcedores:[],
-    },
+    data:{
+            teste:"James",
+            torcedores:[],
+        },
+    computed:{
+        ultimoTorcedor(){
+            let indice = this.torcedores.length - 1
+            let texto = ' '
 
-methods:{
-    adicionarTorcedor(){
-        this.torcedores.push({
-            nome:inputNome.value,
-            idade:inputIdade.value,
-            time:inputTime.value
-        });
-    }
-    
-},
+            texto += ' Torcedor: ' + this.torcedores[indice].nome
+            texto += ' Idade: ' + this.torcedores[indice].idade
+            texto += ' Time: ' + this.torcedores[indice].time
+            
+            return texto;
+        },
+        flitroTime(){
+            return this.torcedores.filter(item => item.time === 'Bahia')
+        },
+        mostraUltimo(){
+            if(this.torcedores.length > 0)
+                return true
+            else
+                return false
+        },   
+    },   
+   
+    methods:{
+        adicionarTorcedor(){
+            this.torcedores.push({
+                nome:inputNome.value,
+                idade:inputIdade.value,
+                time:inputTime.value
+            });
+        }
+        
+    },
 });
 
