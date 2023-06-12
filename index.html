@@ -23,9 +23,21 @@
             <h4>Torcedores do Bahia</h4>
             <p v-for="dados in flitroTime">{{ dados.nome }}</p>
             <hr/>
-            <h4>Torcedores Cadastrado</h4>
-            <p v-for="dados in torcedores">{{dados.nome}}</p>
-            <button @click="removerTorcedor()">Remover Torcedor</button>
+            <div>
+                <div class="cadastrado" v-if="telaRemove === false">
+                    <h4>Torcedores Cadastrado</h4>
+                    <p v-for="dados in torcedores">{{dados.nome}}</p>
+                </div>
+                <div class="removido" v-if="telaRemove === true">
+                    <h4>Torcedores Removido</h4>
+                    <template v-if="mostraUltimo">
+                        <p>{{ mostrarNomeRemovido }}</p>
+                    </template>
+                </div>
+                <hr/>
+                <span>Remover:</span><input id="inputNomeRemove" type="text" v-model="nomeRemove" placeholder="Torcedor a ser removido" />
+                    <button @click=removerTorcedor()>Remover Torcedor</button> 
+            </div>
         </div>
         <script src="./js/script.js"></script>
 </body>
